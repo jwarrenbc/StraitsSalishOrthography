@@ -1,0 +1,617 @@
+{
+  "p": {
+    "SEN": "P",
+    "XWL": {
+      "lower": "p",
+      "upper": "P"
+    },
+    "XWS": {
+      "lower": "p",
+      "upper": "P"
+    },
+    "LEK-X": {
+      "lower": "p",
+      "upper": "P"
+    }
+  },
+  "t": {
+    "SEN": "T",
+    "XWL": {
+      "lower": "t",
+      "upper": "T"
+    },
+    "XWS": {
+      "lower": "t",
+      "upper": "T"
+    },
+    "LEK-X": {
+      "lower": "t",
+      "upper": "T"
+    }
+  },
+  "k": {
+    "SEN": "C",
+    "XWL": {
+      "lower": "k",
+      "upper": "K"
+    },
+    "XWS": {
+      "lower": "k",
+      "upper": "K"
+    },
+    "LEK-X": {
+      "lower": "k",
+      "upper": "K"
+    }
+  },
+  "θ": {
+    "SEN": "Ŧ",
+    "XWL": {
+      "lower": "s",
+      "upper": "S"
+    },
+    "XWS": {
+      "lower": "s",
+      "upper": "S"
+    },
+    "LEK-X": {
+      "lower": "s",
+      "upper": "S"
+    }
+  },
+  "s": {
+    "SEN": "S",
+    "XWL": {
+      "lower": "s",
+      "upper": "S"
+    },
+    "XWS": {
+      "lower": "s",
+      "upper": "S"
+    },
+    "LEK-X": {
+      "lower": "s",
+      "upper": "S"
+    }
+  },
+  "š": {
+    "SEN": "Ś",
+    "XWL": {
+      "lower": "sh",
+      "upper": "Sh"
+    },
+    "XWS": {
+      "lower": "sh",
+      "upper": "Sh"
+    },
+    "LEK-X": {
+      "lower": "š",
+      "upper": "Š"
+    }
+  },
+  "č": {
+    "SEN": "Ć",
+    "XWL": {
+      "lower": "ch",
+      "upper": "Ch"
+    },
+    "XWS": {
+      "lower": "ch",
+      "upper": "Ch"
+    },
+    "LEK-X": {
+      "lower": "č",
+      "upper": "Č"
+    }
+  },
+  "h": {
+    "SEN": "H",
+    "XWL": {
+      "lower": "h",
+      "upper": "H"
+    },
+    "XWS": {
+      "lower": "h",
+      "upper": "H"
+    },
+    "LEK-X": {
+      "lower": "h",
+      "upper": "H"
+    }
+  },
+  "l": {
+    "SEN": "L",
+    "XWL": {
+      "lower": "l",
+      "upper": "L"
+    },
+    "XWS": {
+      "lower": "l",
+      "upper": "L"
+    },
+    "LEK-X": {
+      "lower": "l",
+      "upper": "L"
+    }
+  },
+  "y": {
+    "SEN": "Y",
+    "XWL": {
+      "lower": "y",
+      "upper": "Y"
+    },
+    "XWS": {
+      "lower": "y",
+      "upper": "Y"
+    },
+    "LEK-X": {
+      "lower": "y",
+      "upper": "Y"
+    }
+  },
+  "w": {
+    "SEN": "W",
+    "XWL": {
+      "lower": "w",
+      "upper": "W"
+    },
+    "XWS": {
+      "lower": "w",
+      "upper": "W"
+    },
+    "LEK-X": {
+      "lower": "w",
+      "upper": "W"
+    }
+  },
+  "m": {
+    "SEN": "M",
+    "XWL": {
+      "lower": "m",
+      "upper": "M"
+    },
+    "XWS": {
+      "lower": "m",
+      "upper": "M"
+    },
+    "LEK-X": {
+      "lower": "m",
+      "upper": "M"
+    }
+  },
+  "n": {
+    "SEN": "N",
+    "XWL": {
+      "lower": "n",
+      "upper": "N"
+    },
+    "XWS": {
+      "lower": "n",
+      "upper": "N"
+    },
+    "LEK-X": {
+      "lower": "n",
+      "upper": "N"
+    }
+  },
+  "ŋ": {
+    "SEN": "Ṉ",
+    "XWL": {
+      "lower": "ng",
+      "upper": "Ng"
+    },
+    "XWS": {
+      "lower": "ng",
+      "upper": "Ng"
+    },
+    "LEK-X": {
+      "lower": "ŋ",
+      "upper": "Ŋ"
+    }
+  },
+  "kʷ": {
+    "SEN": "Ȼ",
+    "XWL": {
+      "lower": "kw",
+      "upper": "Kw"
+    },
+    "XWS": {
+      "lower": "kw",
+      "upper": "Kw"
+    },
+    "LEK-X": {
+      "lower": "kʷ",
+      "upper": "Kʷ"
+    }
+  },
+  "q": {
+    "SEN": "Ḵ",
+    "XWL": {
+      "lower": "q",
+      "upper": "Q"
+    },
+    "XWS": {
+      "lower": "q",
+      "upper": "Q"
+    },
+    "LEK-X": {
+      "lower": "q",
+      "upper": "Q"
+    }
+  },
+  "qʷ": {
+    "SEN": "Ḱ",
+    "XWL": {
+      "lower": "qw",
+      "upper": "Qw"
+    },
+    "XWS": {
+      "lower": "qw",
+      "upper": "Qw"
+    },
+    "LEK-X": {
+      "lower": "qʷ",
+      "upper": "Qʷ"
+    }
+  },
+  "xʷ": {
+    "SEN": "W̱",
+    "XWL": {
+      "lower": "xw",
+      "upper": "Xw"
+    },
+    "XWS": {
+      "lower": "xw",
+      "upper": "Xw"
+    },
+    "LEK-X": {
+      "lower": "xʷ",
+      "upper": "Xʷ"
+    }
+  },
+  "x̣": {
+    "SEN": "X",
+    "XWL": {
+      "lower": "x",
+      "upper": "X"
+    },
+    "XWS": {
+      "lower": "x̲",
+      "upper": "X̲"
+    },
+    "LEK-X": {
+      "lower": "x̣",
+      "upper": "X̣"
+    }
+  },
+  "x̣ʷ": {
+    "SEN": "X̱",
+    "XWL": {
+      "lower": "xw",
+      "upper": "Xw"
+    },
+    "XWS": {
+      "lower": "x̲w",
+      "upper": "X̲w"
+    },
+    "LEK-X": {
+      "lower": "x̣ʷ",
+      "upper": "X̣ʷ"
+    }
+  },
+  "e": {
+    "SEN": "Á",
+    "XWL": {
+      "lower": "e",
+      "upper": "E"
+    },
+    "XWS": {
+      "lower": "e",
+      "upper": "E"
+    },
+    "LEK-X": {
+      "lower": "e",
+      "upper": "E"
+    }
+  },
+  "ey": {
+    "SEN": "Ⱥ",
+    "XWL": {
+      "lower": "ey",
+      "upper": "Ey"
+    },
+    "XWS": {
+      "lower": "ey",
+      "upper": "Ey"
+    },
+    "LEK-X": {
+      "lower": "ey",
+      "upper": "Ey"
+    }
+  },
+  "əy": {
+    "SEN": "Í",
+    "XWL": {
+      "lower": "ay",
+      "upper": "Ay"
+    },
+    "XWS": {
+      "lower": "ay",
+      "upper": "Ay"
+    },
+    "LEK-X": {
+      "lower": "əy",
+      "upper": "Əy"
+    }
+  },
+  "ə": {
+    "SEN": "E",
+    "XWL": {
+      "lower": "u",
+      "upper": "U"
+    },
+    "XWS": {
+      "lower": "u",
+      "upper": "U"
+    },
+    "LEK-X": {
+      "lower": "ə",
+      "upper": "Ə"
+    }
+  },
+  "a": {
+    "SEN": "A",
+    "XWL": {
+      "lower": "a",
+      "upper": "A"
+    },
+    "XWS": {
+      "lower": "a",
+      "upper": "A"
+    },
+    "LEK-X": {
+      "lower": "a",
+      "upper": "A"
+    }
+  },
+  "i": {
+    "SEN": "I",
+    "XWL": {
+      "lower": "i",
+      "upper": "I"
+    },
+    "XWS": {
+      "lower": "i",
+      "upper": "I"
+    },
+    "LEK-X": {
+      "lower": "i",
+      "upper": "I"
+    }
+  },
+  "o": {
+    "SEN": "O",
+    "XWL": {
+      "lower": "o",
+      "upper": "O"
+    },
+    "XWS": {
+      "lower": "o",
+      "upper": "O"
+    },
+    "LEK-X": {
+      "lower": "o",
+      "upper": "O"
+    }
+  },
+  "u": {
+    "SEN": "U",
+    "XWL": {
+      "lower": "ou",
+      "upper": "Ou"
+    },
+    "XWS": {
+      "lower": "u",
+      "upper": "U"
+    },
+    "LEK-X": {
+      "lower": "u",
+      "upper": "U"
+    }
+  },
+  "ʔ": {
+    "SEN": "¸",
+    "XWL": {
+      "lower": "ʼ",
+      "upper": "ʼ"
+    },
+    "XWS": {
+      "lower": "7",
+      "upper": "7"
+    },
+    "LEK-X": {
+      "lower": "ʔ",
+      "upper": "ʔ"
+    }
+  },
+  "ɬ": {
+    "SEN": "Ƚ",
+    "XWL": {
+      "lower": "lh",
+      "upper": "Lh"
+    },
+    "XWS": {
+      "lower": "lh",
+      "upper": "Lh"
+    },
+    "LEK-X": {
+      "lower": "ɬ",
+      "upper": "Ɬ"
+    }
+  },
+  "t̓ᶿ": {
+    "SEN": "Ⱦ",
+    "XWL": {
+      "lower": "tsʼ",
+      "upper": "Tsʼ"
+    },
+    "XWS": {
+      "lower": "tsʼ",
+      "upper": "Tsʼ"
+    },
+    "LEK-X": {
+      "lower": "c̓",
+      "upper": "C̓"
+    }
+  },
+  "p̓": {
+    "SEN": "B",
+    "XWL": {
+      "lower": "pʼ",
+      "upper": "Pʼ"
+    },
+    "XWS": {
+      "lower": "pʼ",
+      "upper": "Pʼ"
+    },
+    "LEK-X": {
+      "lower": "p̓",
+      "upper": "P̓"
+    }
+  },
+  "t̓": {
+    "SEN": "D",
+    "XWL": {
+      "lower": "tʼ",
+      "upper": "Tʼ"
+    },
+    "XWS": {
+      "lower": "tʼ",
+      "upper": "Tʼ"
+    },
+    "LEK-X": {
+      "lower": "t̓",
+      "upper": "T̓"
+    }
+  },
+  "k̓": {
+    "SEN": "G",
+    "XWL": {
+      "lower": "kʼ",
+      "upper": "Kʼ"
+    },
+    "XWS": {
+      "lower": "kʼ",
+      "upper": "Kʼ"
+    },
+    "LEK-X": {
+      "lower": "k̓",
+      "upper": "K̓"
+    }
+  },
+  "k̓ʷ": {
+    "SEN": "Q",
+    "XWL": {
+      "lower": "kwʼ",
+      "upper": "Kwʼ"
+    },
+    "XWS": {
+      "lower": "kwʼ",
+      "upper": "Kwʼ"
+    },
+    "LEK-X": {
+      "lower": "k̓ʷ",
+      "upper": "K̓ʷ"
+    }
+  },
+  "q̓": {
+    "SEN": "K",
+    "XWL": {
+      "lower": "qʼ",
+      "upper": "Qʼ"
+    },
+    "XWS": {
+      "lower": "qʼ",
+      "upper": "Qʼ"
+    },
+    "LEK-X": {
+      "lower": "q̓",
+      "upper": "Q̓"
+    }
+  },
+  "q̓ʷ": {
+    "SEN": "₭",
+    "XWL": {
+      "lower": "qwʼ",
+      "upper": "Qwʼ"
+    },
+    "XWS": {
+      "lower": "qwʼ",
+      "upper": "Qwʼ"
+    },
+    "LEK-X": {
+      "lower": "q̓ʷ",
+      "upper": "Q̓ʷ"
+    }
+  },
+  "ƛ̓": {
+    "SEN": "Ṯ",
+    "XWL": {
+      "lower": "tlʼ",
+      "upper": "Tlʼ"
+    },
+    "XWS": {
+      "lower": "tlʼ",
+      "upper": "Tlʼ"
+    },
+    "LEK-X": {
+      "lower": "ƛ̓",
+      "upper": "Ƛ̓"
+    }
+  },
+  "č̓": {
+    "SEN": "J",
+    "XWL": {
+      "lower": "chʼ",
+      "upper": "Chʼ"
+    },
+    "XWS": {
+      "lower": "chʼ",
+      "upper": "Chʼ"
+    },
+    "LEK-X": {
+      "lower": "č̓",
+      "upper": "Č̓"
+    }
+  },
+  "uʔ": {
+    "SEN": "U¸",
+    "XWL": {
+      "lower": "uʼ",
+      "upper": "Uʼ"
+    },
+    "XWS": {
+      "lower": "uʼ",
+      "upper": "Uʼ"
+    },
+    "LEK-X": {
+      "lower": "əw̓",
+      "upper": "Əw̓"
+    }
+  },
+  "tθ": {
+    "SEN": "TŦ",
+    "XWL": {
+      "lower": "ts",
+      "upper": "Ts"
+    },
+    "XWS": {
+      "lower": "ts",
+      "upper": "Ts"
+    },
+    "LEK-X": {
+      "lower": "c",
+      "upper": "C"
+    }
+  }
+}
