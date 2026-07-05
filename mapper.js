@@ -1,133 +1,151 @@
-class OrthographyMapper {
-  constructor(mapping) {
-    this.mapping = mapping;
-    this.orthographies = ['SEN', 'XWL', 'XWS', 'LEK-X', 'LEK-S'];
-    this.reverseIndexes = {};
+const fs = require('fs');
+const path = require('path');
 
-    for (const orthography of this.orthographies) {
-      this.reverseIndexes[orthography] = this.buildSourceIndex(orthography);
+// Read and parse CSV relative to this file
+const csvPath = path.join(__dirname, 'orthography_mapping.csv');
+const csvText = fs.readFileSync(csvPath, 'utf8').normalize('NFC');
+
+const lines = csvText.trim().split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+const headers = lines[0].split(',').map(h => h.trim());
+
+const mappings = [];
+for (let i = 1; i < lines.length; i++) {
+  const cols = lines[i].split(',').map(c => c.trim());
+  if (cols.length < headers.length) continue;
+  const row = {};
+  for (let j = 0; j < headers.length; j++) {
+    row[headers[j]] = cols[j];
+  }
+  mappings.push(row);
+}
+
+// Precompile greedy pattern lists for each orthography
+const patternsByOrtho = {};
+for (const ortho of headers) {
+  const patterns = [];
+  const seen = new Set();
+  for (const row of mappings) {
+    const pat = row[ortho];
+    if (!pat) continue;
+    const lowerPat = pat.toLowerCase();
+    if (!seen.has(lowerPat)) {
+      seen.add(lowerPat);
+      patterns.push({
+        original: pat,
+        lower: lowerPat,
+        row: row
+      });
     }
   }
+  // Sort by length of original pattern descending to ensure greedy matching
+  patterns.sort((a, b) => b.original.length - a.original.length);
+  patternsByOrtho[ortho] = patterns;
+}
 
-  buildSourceIndex(orthography) {
-    const index = [];
+// Helpers for casing
+function getCasing(str) {
+  if (str === str.toLowerCase()) return 'lower';
+  if (str === str.toUpperCase()) return 'upper';
+  const first = str.charAt(0);
+  if (first === first.toUpperCase() && first !== first.toLowerCase()) {
+    return 'capitalized';
+  }
+  return 'lower';
+}
 
-    for (const [id, data] of Object.entries(this.mapping)) {
-      if (orthography === 'LEK-S') {
-        // LEK-S (Songhees) input is assumed to strictly use lowercase characters.
-        this.addVariant(index, id, id, 'lower');
-        continue;
-      }
+function applyCasing(str, casing) {
+  if (casing === 'lower') return str.toLowerCase();
+  if (casing === 'upper') return str.toUpperCase();
+  if (casing === 'capitalized') {
+    if (str.length === 0) return '';
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+  return str.toLowerCase();
+}
 
-      if (orthography === 'SEN') {
-        // SENCOTEN input is strictly in the SENCOTEN alphabet (no casing variations).
-        this.addVariant(index, data.SEN, id, 'upper');
-        continue;
-      }
-
-      // XWL, XWS, and LEK-X use explicit lower, title, and shouted variants.
-      this.addVariant(index, data[orthography].lower, id, 'lower');
-      this.addVariant(index, data[orthography].upper, id, 'upper');
-
-      const shoutedVariant = data[orthography].upper.toUpperCase();
-      if (shoutedVariant !== data[orthography].upper) {
-        this.addVariant(index, shoutedVariant, id, 'upper');
+function applySentenceCase(text) {
+  let result = '';
+  let capitalizeNext = true;
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    if (capitalizeNext && /\p{L}/u.test(char)) {
+      result += char.toUpperCase();
+      capitalizeNext = false;
+    } else {
+      result += char;
+      if (/[.!?\n]/.test(char)) {
+        capitalizeNext = true;
       }
     }
+  }
+  return result;
+}
 
-    // Greedy matching: longest grapheme strings win.
-    index.sort((a, b) => {
-      const aLength = [...a.g].length;
-      const bLength = [...b.g].length;
-      if (bLength !== aLength) {
-        return bLength - aLength;
-      }
-      return b.g.length - a.g.length;
-    });
-
-    return index;
+// Main Translation Function
+function mapOrthography(sourceOrtho, targetOrtho, text) {
+  if (!headers.includes(sourceOrtho) || !headers.includes(targetOrtho)) {
+    throw new Error(`Invalid orthography name: source='${sourceOrtho}', target='${targetOrtho}'`);
   }
 
-  addVariant(index, grapheme, id, caseType) {
-    index.push({ g: grapheme, id, case: caseType });
+  if (text === null || text === undefined) {
+    return '';
   }
 
-  tokenize(text, fromOrthography) {
-    if (!this.reverseIndexes[fromOrthography]) {
-      throw new Error(`Unknown source orthography: ${fromOrthography}`);
-    }
+  // Normalize input Unicode NFC
+  const normalizedText = String(text).normalize('NFC');
+  const patterns = patternsByOrtho[sourceOrtho] || [];
 
-    text = text.normalize('NFC');
-    const index = this.reverseIndexes[fromOrthography];
-    const tokens = [];
-    let position = 0;
+  let result = '';
+  let i = 0;
 
-    while (position < text.length) {
-      let matched = false;
+  while (i < normalizedText.length) {
+    let matched = false;
 
-      for (const rule of index) {
-        if (text.startsWith(rule.g, position)) {
-          tokens.push({ type: 'mapped', id: rule.id, case: rule.case });
-          position += rule.g.length;
+    for (const pat of patterns) {
+      const len = pat.original.length;
+      if (i + len <= normalizedText.length) {
+        const candidate = normalizedText.substr(i, len);
+        if (candidate.toLowerCase() === pat.lower) {
+          const rawTarget = pat.row[targetOrtho];
+          let mappedVal = rawTarget;
+
+          // Casing logic
+          if (targetOrtho === 'LEK-S') {
+            mappedVal = rawTarget.toLowerCase();
+          } else if (targetOrtho === 'SEN') {
+            mappedVal = rawTarget.toUpperCase();
+          } else {
+            // Target is mixed-case: XWL, XWS, or LEK-X
+            if (sourceOrtho === 'LEK-S' || sourceOrtho === 'SEN') {
+              // Casing is handled via sentence casing post-process
+              mappedVal = rawTarget.toLowerCase();
+            } else {
+              // Maintain case from mixed-case source
+              const casing = getCasing(candidate);
+              mappedVal = applyCasing(rawTarget, casing);
+            }
+          }
+
+          result += mappedVal;
+          i += len;
           matched = true;
           break;
         }
       }
-
-      if (!matched) {
-        const codePoint = text.codePointAt(position);
-        const char = String.fromCodePoint(codePoint);
-        tokens.push({ type: 'unmapped', value: char });
-        position += char.length;
-      }
     }
 
-    return tokens;
-  }
-
-  render(tokens, toOrthography) {
-    if (!this.orthographies.includes(toOrthography)) {
-      throw new Error(`Unknown target orthography: ${toOrthography}`);
+    if (!matched) {
+      result += normalizedText[i];
+      i++;
     }
-
-    let result = '';
-
-    for (const token of tokens) {
-      if (token.type === 'unmapped') {
-        result += token.value;
-        continue;
-      }
-
-      const id = token.id;
-      const caseType = token.case || 'lower';
-
-      if (toOrthography === 'LEK-S') {
-        // LEK-S (Songhees) output stays lowercase-only and uses the internal identifier directly.
-        result += id;
-        continue;
-      }
-
-      if (toOrthography === 'SEN') {
-        // SEN output is fixed uppercase output from the config.
-        result += this.mapping[id].SEN;
-        continue;
-      }
-
-      if (caseType === 'upper') {
-        // Explicit shouted-text path: use the upper/title variant defined in config.
-        result += this.mapping[id][toOrthography].upper;
-      } else {
-        result += this.mapping[id][toOrthography].lower;
-      }
-    }
-
-    return result;
   }
 
-  translate(text, fromOrthography, toOrthography) {
-    const tokens = this.tokenize(text, fromOrthography);
-    return this.render(tokens, toOrthography);
+  // Post-process sentence casing if mapping from LEK-S or SEN to mixed-case
+  if ((sourceOrtho === 'LEK-S' || sourceOrtho === 'SEN') && (targetOrtho === 'XWL' || targetOrtho === 'XWS' || targetOrtho === 'LEK-X')) {
+    result = applySentenceCase(result);
   }
+
+  return result;
 }
 
-module.exports = OrthographyMapper;
+module.exports = mapOrthography;
