@@ -1,6 +1,6 @@
-# North Straits Salish Orthography Translator
+# North Straits Salish Orthography Transliterator
 
-A lightweight, modern, and minimal translation utility for converting text between different orthographies of North Straits Salish.
+A lightweight, modern, and minimal transliteration utility for converting text between different orthographies of North Straits Salish.
 
 **Live Web Application**: [https://jwarrenbc.github.io/StraitsSalishOrthography/](https://jwarrenbc.github.io/StraitsSalishOrthography/)
 
