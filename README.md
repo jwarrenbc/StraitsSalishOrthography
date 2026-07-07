@@ -4,6 +4,9 @@ A lightweight, modern, and minimal translation utility for converting text betwe
 
 **Live Web Application**: [https://jwarrenbc.github.io/StraitsSalishOrthography/](https://jwarrenbc.github.io/StraitsSalishOrthography/)
 
+> [!WARNING]
+> **Beta**: This application has not been fully verified. Please use with discretion.
+
 This repository is split into two parts:
 1. **Core Translation Library (`lib/`)**: A platform-independent JavaScript library.
 2. **Web Application (`web/` & `index.html`)**: A responsive web interface built on top of the core library.

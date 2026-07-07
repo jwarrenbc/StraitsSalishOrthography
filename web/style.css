@@ -63,6 +63,18 @@ header p {
   color: var(--text-muted);
 }
 
+.beta-notice {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: #b45309;
+  background-color: #fef3c7;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  border: 1px solid #fde68a;
+}
+
 /* Translator Grid */
 .translator-grid {
   display: grid;
