@@ -19,11 +19,13 @@ qʷ,Ḱ,qw,qw,qʷ
 xʷ,W̱,xw,xw,xʷ
 x̣,X,x,x̲,x̣
 x̣ʷ,X̱,xw,x̲w,x̣ʷ
-e,Á,e,e,e
+e,Á,a,a,e
+ee,ÁÁ,ea,a:,ee
 ey,Ⱥ,ey,ey,ey
 əy,Í,ay,ay,əy
-ə,E,u,u,ə
-a,O,a,a,a
+ə,E,e,e,ə
+a,O,o,o,a
+aa,OO,oo,o:,aa
 i,I,i,i,i
 u,U,ou,u,u
 ʔ,¸,ʼ,7,ʔ
@@ -38,6 +40,9 @@ q̓,K,qʼ,qʼ,q̓
 q̓ʷ,₭,qwʼ,qwʼ,q̓ʷ
 ƛ̓,Ṯ,tlʼ,tlʼ,ƛ̓
 č̓,J,chʼ,chʼ,č̓
+ey̓,Ⱥ¸,eyʼ,ey7,ey̓
+əy̓,Í¸,ayʼ,ay7,əy̓
+y̓,Y¸,yʼ,y7,y̓
 uʔ,U¸,uʼ,uʼ,əw̓
 uʔ,EU¸,uʼ,uʼ,əw̓
 tθ,TŦ,ts,ts,c
