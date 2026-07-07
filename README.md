@@ -4,9 +4,9 @@ A lightweight, modern, and minimal translation utility for converting text betwe
 
 **Live Web Application**: [https://jwarrenbc.github.io/StraitsSalishOrthography/](https://jwarrenbc.github.io/StraitsSalishOrthography/)
 
-This repository is split into two clean parts:
-1. **Core Translation Library (`lib/`)**: A pure, platform-independent JavaScript library.
-2. **Web Application (`web/` & `index.html`)**: A real-time, responsive web interface built on top of the core library.
+This repository is split into two parts:
+1. **Core Translation Library (`lib/`)**: A platform-independent JavaScript library.
+2. **Web Application (`web/` & `index.html`)**: A responsive web interface built on top of the core library.
 
 ---
 
@@ -15,9 +15,9 @@ This repository is split into two clean parts:
 The tool supports translations across the following five orthographies defined in `lib/orthography_mapping.csv`:
 - **SEN**: SENĆOŦEN
 - **LEK-S**: Songhees Lək̓ʷəŋən
-- **XWL**: Xwlemi Chosen
-- **XWS**: Xws7ameshqen
-- **LEK-X**: Xʷsepsəm Lək̓ʷəŋən (Xwsepsum Lək̓ʷəŋən)
+- **XWL**: Xwlemi Chosen (Lummi)
+- **XWS**: Xws7ameshqen (Samish)
+- **LEK-X**: Xʷsepsəm Lək̓ʷəŋən (Esquimalt Lək̓ʷəŋən)
 
 ---
 
