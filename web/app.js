@@ -17,18 +17,21 @@ document.addEventListener('DOMContentLoaded', () => {
   outputOrthoSelect.disabled = true;
   inputTextarea.placeholder = 'Loading orthography mappings...';
 
-  // Fetch the CSV directly from the server's lib directory
-  fetch('lib/orthography_mapping.csv')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Failed to load CSV: ${response.statusText} (${response.status})`);
-      }
-      return response.text();
+  // Fetch both mapping and vowels CSVs directly from the server's lib directory
+  Promise.all([
+    fetch('lib/orthography_mapping.csv').then(res => {
+      if (!res.ok) throw new Error(`Failed to load mapping CSV: ${res.statusText} (${res.status})`);
+      return res.text();
+    }),
+    fetch('lib/vowels.csv').then(res => {
+      if (!res.ok) throw new Error(`Failed to load vowels CSV: ${res.statusText} (${res.status})`);
+      return res.text();
     })
-    .then(csvText => {
+  ])
+    .then(([csvText, vowelsCsvText]) => {
       // Instantiate the mapper using the class exported from mapper.js
       const OrthographyMapper = module.exports;
-      mapper = new OrthographyMapper(csvText);
+      mapper = new OrthographyMapper(csvText, vowelsCsvText);
       
       // Enable the UI inputs
       inputTextarea.disabled = false;
@@ -40,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(error => {
       console.error('Initialization error:', error);
       inputTextarea.placeholder = 'Failed to load translator mapping engine.';
-      outputTextarea.value = `Error loading translation mappings: ${error.message}\n\nPlease check that the file 'lib/orthography_mapping.csv' is hosted and accessible.`;
+      outputTextarea.value = `Error loading translation mappings: ${error.message}\n\nPlease check that the files 'lib/orthography_mapping.csv' and 'lib/vowels.csv' are hosted and accessible.`;
       outputTextarea.classList.add('error');
     });
 
