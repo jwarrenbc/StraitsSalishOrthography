@@ -1,4 +1,4 @@
-﻿IPA,NAPA,XWS,SEN,LEK-S,LEK-X,XWL,Type
+IPA,NAPA,XWS,SEN,LEK-S,LEK-X,XWL,Type
 ʔ ,ʔ ,7,¸,ʔ ,ʔ ,,glottal
 æ,æ,a,A,e,e,e,vowel
 e,e,a,Á,e,e,e,vowel
@@ -7,11 +7,12 @@ ew,ew,aw,AU,ew,ew,ew,vowel
 ew,ew,aw,ÁU,ew,ew,ew,vowel
 ej,ey,ay,Ⱥ,ey,ey,ey,vowel
 eˀj,ey̓,ay',Ⱥ¸,ey̓,ey̓,ey,vowel
-t͡ʃ ,č,ch,Ć,č,č,ch',consonant
+t͡ʃ ,č,ch,Ć,č,č,ch,consonant
 t͡ʃˈ,č̓,ch',J,č̓,č̓,ch',consonant
 ə,ə,e,E,ə,ə,u,vowel
 əː,ə·,e:,EE,əə,əə,uu,vowel
 əw,əw,ew,EW,əw,əw,uw,vowel
+əxʷ,əxʷ,exw,EW̱,əxʷ,əxʷ,uhw,vowel
 əw,əw,ew,EU,əw,əw,uw,vowel
 əw',əw̓,u7,EU¸,əw̓,əw̓,uw',vowel
 əw',əw̓,u7,U¸,əw̓,əw̓,uw',vowel
