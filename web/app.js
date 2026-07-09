@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   inputTextarea.placeholder = 'Loading orthography mappings...';
 
   // Fetch the mapping CSV directly from the server's lib directory
-  fetch('lib/orthography_mapping_2.csv')
+  fetch('lib/orthography_mapping.csv')
     .then(res => {
       if (!res.ok) throw new Error(`Failed to load mapping CSV: ${res.statusText} (${res.status})`);
       return res.text();
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(error => {
       console.error('Initialization error:', error);
       inputTextarea.placeholder = 'Failed to load translator mapping engine.';
-      outputTextarea.value = `Error loading translation mappings: ${error.message}\n\nPlease check that the file 'lib/orthography_mapping_2.csv' is hosted and accessible.`;
+      outputTextarea.value = `Error loading translation mappings: ${error.message}\n\nPlease check that the file 'lib/orthography_mapping.csv' is hosted and accessible.`;
       outputTextarea.classList.add('error');
     });
 
