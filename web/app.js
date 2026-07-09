@@ -107,9 +107,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Swap Languages Action
   if (swapBtn) {
     swapBtn.addEventListener('click', () => {
-      const temp = inputOrthoSelect.value;
+      const tempOrtho = inputOrthoSelect.value;
       inputOrthoSelect.value = outputOrthoSelect.value;
-      outputOrthoSelect.value = temp;
+      outputOrthoSelect.value = tempOrtho;
+      
+      const tempText = inputTextarea.value;
+      inputTextarea.value = outputTextarea.value;
+      outputTextarea.value = tempText;
       
       // Re-translate with new source/target
       performTranslation();
