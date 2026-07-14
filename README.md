@@ -15,7 +15,7 @@ This repository is split into two parts:
 
 ## Supported Orthographies
 
-The tool supports translations across the following five orthographies defined in `lib/orthography_mapping.csv`:
+This tool builds on the research of Olive Brend of the Samish Indian Nation. It supports translations across the following five orthographies defined in `lib/orthography_mapping.csv`:
 - **SEN**: SENĆOŦEN
 - **LEK-S**: Songhees Lək̓ʷəŋən
 - **XWL**: Xwlemi Chosen (Lummi)
@@ -30,18 +30,15 @@ The `OrthographyMapper` is a platform-independent JavaScript class that does not
 
 It performs translation in two stages:
 1. **Greedy Character Mapping**: Matches longest substrings first from `lib/orthography_mapping.csv` to map characters between orthographies (handling case rules, multi-graphs, and punctuation).
-2. **Word-Boundary Glottal Stop Rules**: Tokenizes the output text to add or remove leading glottal stops for words starting with vowels according to their rules (using configurations defined in `lib/vowels.csv`).
-
-### Vowels & Glottals Configuration (`lib/vowels.csv`)
-Configured to handle distinct phonetics per orthography:
-- **LEK-S / LEK-X**: Initial glottals are written explicitly (e.g. `ʔiɬən`) except for `ə` as a whole word.
-- **SEN / XWL / XWS**: Initial glottals are implicit and not written (e.g. `IȽEN`) except for the word `ʔə` (SEN: `¸E`, XWL: `ʼu`, XWS: `7u`).
+2. **Word-Boundary Glottal Stop Rules**: Tokenizes the output text to add or remove leading glottal stops for words starting with vowels according to their rules.
+    - **LEK-S / LEK-X**: Initial glottals are written explicitly (e.g. `ʔiɬən`) except for `ə` as a whole word.
+    - **SEN / XWL / XWS**: Initial glottals are implicit and not written (e.g. `IȽEN`) except for the word `ʔə` (SEN: `¸E`, XWL: `ʼu`, XWS: `7u`).
 
 ---
 
 ## Integrating `mapper.js` in Another Project
 
-To use the mapping engine in your own project, copy `lib/mapper.js`, `lib/orthography_mapping.csv`, and `lib/vowels.csv` into your codebase.
+To use the mapping engine in your own project, copy `lib/mapper.js` and `lib/orthography_mapping.csv` into your codebase.
 
 ### 1. In Node.js
 
@@ -52,10 +49,9 @@ const OrthographyMapper = require('./lib/mapper');
 
 // Read the CSV data from disk
 const csvText = fs.readFileSync(path.join(__dirname, 'lib/orthography_mapping.csv'), 'utf8');
-const vowelsCsvText = fs.readFileSync(path.join(__dirname, 'lib/vowels.csv'), 'utf8');
 
 // Initialize the mapper
-const mapper = new OrthographyMapper(csvText, vowelsCsvText);
+const mapper = new OrthographyMapper(csvText);
 
 // Translate text
 const input = "IȽEN E SW̱ ¸E TŦE SĆÁÁNEW̱?";
@@ -82,10 +78,9 @@ console.log(output);
 
   Promise.all([
     fetch('lib/orthography_mapping.csv').then(res => res.text()),
-    fetch('lib/vowels.csv').then(res => res.text())
   ])
-  .then(([csvText, vowelsCsvText]) => {
-    const mapper = new OrthographyMapper(csvText, vowelsCsvText);
+  .then(([csvText]) => {
+    const mapper = new OrthographyMapper(csvText);
     
     const input = "IȽEN E SW̱ ¸E TŦE SĆÁÁNEW̱?";
     const output = mapper.translate("SEN", "LEK-X", input);
